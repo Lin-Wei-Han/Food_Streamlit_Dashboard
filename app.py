@@ -89,5 +89,6 @@ if selected == 'Text Cloud':
 
 if selected == 'Bar Chart':
     st.markdown('### 美食類型推薦貼文統計')
+    st.markdown('利用主題分類統計各美食類型被推薦次數，並統計該類主題貼文的平均讚數。')
     barChart_chart = generate_barChart()
     streamlit_echarts.st_pyecharts(barChart_chart, height = "700px")
