@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 from collections import OrderedDict
 
+# 轉換日期格式
 def process_time(time_str):
     output_format = "%Y年%m月"
     if '年' in time_str:
@@ -17,6 +18,7 @@ def process_time(time_str):
         formatted_time = f"{datetime.now().year}年{datetime.now().month}月"
     return str(formatted_time)
 
+# 計算詞頻
 def wordFrequency(text):
     words = text.split()
     word_count = {}
@@ -51,6 +53,7 @@ for item in json_data:
 for item in grouped_text:
     grouped_text[item] = wordFrequency(grouped_text[item])
 
+# 依日期排序字典順序
 grouped_text = OrderedDict(sorted(grouped_text.items(), key=lambda x: datetime.strptime(x[0], "%Y年%m月"), reverse=True))
 
 with open('data/wordCloud.json', 'w', encoding='utf-8') as json_file:

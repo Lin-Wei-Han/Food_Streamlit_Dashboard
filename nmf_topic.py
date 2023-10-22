@@ -19,6 +19,7 @@ num_topics = 18
 nmf = NMF(n_components=num_topics, random_state=1)
 nmf.fit(tfidf_matrix)
 
+# 輸出個主題下的字詞
 feature_names = tfidf_vectorizer.get_feature_names_out()
 for topic_idx, topic in enumerate(nmf.components_):
     top_keywords_idx = topic.argsort()[:-10 - 1:-1]  # 取前 10 個詞
@@ -32,6 +33,8 @@ for topic_idx, topic in enumerate(nmf.components_):
 
 topic_distribution = nmf.transform(tfidf_matrix)
 top_topic_indices = np.argmax(topic_distribution, axis=1)
+
+# 根據主題下的字詞表現，調整主題名稱
 topic_names = ["飯店", "火鍋", "海港海鮮", "燒肉", "牛排", "銅盤烤肉", "日式料理", "其他", "異國", "海鮮料理", "肉" ,"鍋物燒肉", "其他", "港式粵式", "拉麵", "韓式料理", "吃到飽", "泰式料理"]
 
 

@@ -50,7 +50,6 @@ def generate_barChart():
     )
     return bar
 
-# st.set_page_config(layout="wide")
 st.set_page_config(layout = "centered")
 
 st.title('Facebook 美食社團分析')
