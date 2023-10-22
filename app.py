@@ -54,7 +54,7 @@ def generate_barChart():
 st.set_page_config(layout = "centered")
 
 st.title('Facebook 美食社團分析')
-st.markdown('> **資料來源：Facebook社團貼文資料**')
+st.markdown('> **資料來源：Facebook社團貼文資料**<br>**蒐集方式：爬蟲**')
 
 selected = option_menu(
     menu_title = None,
