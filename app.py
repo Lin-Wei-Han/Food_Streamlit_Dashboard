@@ -67,9 +67,11 @@ selected = option_menu(
 
 if selected == 'Network':
     st.markdown('### 關聯規則網路圖')
-    st.markdown('利用 NMF 主題模型，為貼文標記主題（美食類型）。最後根據用戶曾評論過哪些類型的美食，進行關聯規則分析。以提升度最高的20筆輸出網絡圖。提升度高表示關聯程度越高。')
+    st.markdown('利用 NMF 主題模型，為貼文標記主題（美食類型）。最後根據用戶曾評論過哪些類型的美食，進行關聯規則分析。以提升度最高的 20 筆輸出網絡圖。提升度高表示關聯程度越高。')
     st.markdown('用戶可依據喜好類型，考慮其他關聯程度高的美食類型。')
-    
+    st.markdown('- **節點：主題類型**')
+    st.markdown('- **線條長度：提升度**')
+
     HtmlFile = open("templates/restaurant_network.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 800)
