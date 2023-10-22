@@ -54,11 +54,12 @@ def generate_barChart():
 st.set_page_config(layout = "centered")
 
 st.title('Facebook 美食社團分析')
+st.markdown('> **資料來源：Facebook社團貼文資料**')
 
 selected = option_menu(
     menu_title = None,
-    options = ['Network', 'Text Cloud', 'Bar Chart'],
-    icons = ['box-fill', 'cloud-fill', 'bar-chart-fill'],
+    options = ['Bar Chart', 'Text Cloud', 'Network'],
+    icons = ['bar-chart-fill', 'cloud-fill','box-fill'],
     menu_icon = 'cast',
     default_index = 0,
     orientation = 'horizontal'
@@ -66,16 +67,19 @@ selected = option_menu(
 
 if selected == 'Network':
     st.markdown('### 關聯規則網路圖')
+    st.markdown('利用 NMF 主題模型，為貼文標記主題（美食類型）。最後根據用戶曾評論過哪些類型的美食，進行關聯規則分析。以提升度最高的20筆輸出網絡圖。提升度高表示關聯程度越高。')
+    st.markdown('用戶可依據喜好類型，考慮其他關聯程度高的美食類型。')
+    
     HtmlFile = open("templates/restaurant_network.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 800)
 
 if selected == 'Text Cloud':
     st.markdown('### 每月關鍵字文字雲')
-    st.markdown('利用提取字無詞頻結果，顯示每月份的社團內討論度最高的關鍵字，並以文字雲呈現，幫助小明參考選擇。')
+    st.markdown('利用提取字詞，顯示每月份的社團內討論度最高的關鍵字，並以文字雲呈現，幫助使用者參考選擇。')
     
-    selected_month = st.selectbox("選擇月份", list(data_by_month.keys()))
-    num_words = st.slider("選擇要顯示的詞語數量", min_value = 10, max_value = 100, value = 100)
+    selected_month = st.selectbox("**篩選月份**", list(data_by_month.keys()))
+    num_words = st.slider("**篩選字詞數量**", min_value = 10, max_value = 100, value = 100)
 
     wordcloud_chart = generate_wordcloud(data_by_month[selected_month], num_words)
 

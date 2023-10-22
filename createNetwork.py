@@ -23,6 +23,7 @@ for item in right_items:
 for index, row in dataset.iterrows():
     left = row["Left Hand Side"]
     right = row["Right Hand Side"]
-    net.add_edge(left, right)
+    edge_length = row["Lift"]
+    net.add_edge(left, right, length = edge_length)
 
 net.write_html("templates/restaurant_network.html")
