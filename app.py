@@ -72,6 +72,7 @@ if selected == 'Network':
 
 if selected == 'Text Cloud':
     st.markdown('### 每月關鍵字文字雲')
+    st.markdown('利用提取字無詞頻結果，顯示每月份的社團內討論度最高的關鍵字，並以文字雲呈現，幫助小明參考選擇。')
     
     selected_month = st.selectbox("選擇月份", list(data_by_month.keys()))
     num_words = st.slider("選擇要顯示的詞語數量", min_value = 10, max_value = 100, value = 100)
